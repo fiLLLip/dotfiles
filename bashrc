@@ -12,6 +12,12 @@ then
   echo "sensible.bash: Keep your software up-to-date!"
 fi
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 ## GENERAL OPTIONS ##
 
 # Prevent file overwrite on stdout redirection
@@ -100,12 +106,6 @@ CDPATH="."
 shopt -s cdable_vars
 
 export dotfiles="$HOME/.dotfiles"
-
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
