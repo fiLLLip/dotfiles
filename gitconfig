@@ -10,3 +10,7 @@
 [user]
 	name = Filip Andre Larsen Tomren
 	email = filiptomren@gmail.com
+        signingkey = 41EED85120FC7439
+
+[commit]
+        gpgsign = true

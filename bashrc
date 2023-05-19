@@ -216,3 +216,5 @@ if [[ -f "/home/filip/.shopify-app-cli/shopify.sh"  ]] && [[ hB == *i* ]]; then
 fi
 
 source ~/.local/bin/bashmarks.sh
+
+export GPG_TTY=$(tty)
