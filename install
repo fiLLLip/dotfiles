@@ -15,10 +15,8 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
 sudo apt update
-sudo apt install -y build-essential make
+sudo apt install -y build-essential make zsh
 
-BASHMARK_DIR="bashmarks"
-git -C "${BASHMARK_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${BASHMARK_DIR}"
-cd "${BASEDIR}/${BASHMARK_DIR}"
-make install
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
