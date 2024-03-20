@@ -12,7 +12,21 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+remember_u_flag=false
+# Check if -u flag is set
+if [[ $* == *-u* ]]; then
+    # Remove -u flag from arguments
+    ARGS="${@//-u/}" | tr -d '[:blank:]' | tr -d '[:space:]'
+    set -- $ARGS
+    # Remember that -u flag was set
+    remember_u_flag=true
+fi
+
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
+if $remember_u_flag; then
+    exit 0
+fi
 
 sudo apt update
 sudo apt install -y build-essential make zsh
