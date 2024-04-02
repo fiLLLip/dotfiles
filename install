@@ -24,6 +24,12 @@ fi
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
+if ! command -v brew &> /dev/null
+then
+    echo "brew could not be found, installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 if $remember_u_flag; then
     exit 0
 fi
