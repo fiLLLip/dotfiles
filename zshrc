@@ -84,6 +84,7 @@ tmux
 python
 gpg-agent
 ssh-agent
+pip
 )
 
 
