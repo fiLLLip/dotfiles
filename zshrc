@@ -85,6 +85,7 @@ python
 gpg-agent
 ssh-agent
 pip
+uv
 )
 
 
@@ -128,3 +129,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+. "$HOME/.local/bin/env"
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
